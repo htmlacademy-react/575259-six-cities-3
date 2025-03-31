@@ -1,3 +1,7 @@
-import { Main } from './pages/main/Main';
+import { Main } from './pages/main';
 
-export const App = () => <Main />;
+type AppProps = {
+  rentalCount?: number;
+}
+
+export const App = ({ rentalCount = 0 }: AppProps) => <Main rentalCount={rentalCount} />;
