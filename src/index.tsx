@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './App';
-import { RENTAL_COUNT } from './constants';
+import { App } from './components/app';
+import { OFFERS } from './mock/offers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -9,6 +9,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App rentalCount={RENTAL_COUNT} />
+    <App offers={OFFERS} />
   </React.StrictMode>
 );

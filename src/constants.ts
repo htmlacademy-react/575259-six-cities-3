@@ -1,13 +1,11 @@
-export const RENTAL_COUNT = 5;
-
-export const LOCATIONS = [
-  'Paris',
-  'Cologne',
-  'Brussels',
-  'Amsterdam',
-  'Hamburg',
-  'Dusseldorf'
-];
+export const Locations = {
+  paris: 'Paris',
+  cologne: 'Cologne',
+  brussels: 'Brussels',
+  amsterdam: 'Amsterdam',
+  hamburg: 'Hamburg',
+  dusseldorf: 'Dusseldorf',
+} as const;
 
 type SortingOption = {
   title: string;
