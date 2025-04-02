@@ -1,0 +1,1 @@
+export { FavoriteLocationOffers } from './FavoriteLocationOffers';

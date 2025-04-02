@@ -1,3 +1,1 @@
-import { LocationsList } from './Locations';
-
-export { LocationsList };
+export { LocationsList } from './Locations';

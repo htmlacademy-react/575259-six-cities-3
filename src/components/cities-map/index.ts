@@ -1,3 +1,1 @@
-import { CitiesMap } from './CitiesMap';
-
-export { CitiesMap };
+export { CitiesMap } from './CitiesMap';

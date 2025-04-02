@@ -1,3 +1,1 @@
-import { LocationTabs } from './LocationTabs';
-
-export { LocationTabs };
+export { LocationTabs } from './LocationTabs';
