@@ -1,11 +1,15 @@
 import classNames from 'classnames';
-import { Offer } from '../../types';
+import { Offer, OfferCardType } from '../../types';
+import { Link } from 'react-router-dom';
+import { getRatingPercentageString } from '../../helpers/strings';
+import { IMAGE_CARD_SIZE } from '../../constants';
 
-type CitiesCardProps = {
+type OfferCardProps = {
   offer: Offer;
+  cardType?: OfferCardType;
 };
 
-export const CitiesCard = ({ offer }: CitiesCardProps) => {
+export const OfferCard = ({ offer, cardType = 'cities' }: OfferCardProps) => {
   const { title, type, price, previewImage, isPremium, isFavorite, rating } =
     offer;
 
@@ -17,28 +21,42 @@ export const CitiesCard = ({ offer }: CitiesCardProps) => {
     }
   );
 
-  const roundedRating = Math.round(rating);
-  const widthPercentage = `${(roundedRating / 5) * 100}%`;
+  const isFavoriteCard = cardType === 'favorites';
+
+  const cardInfoClass = classNames('place-card__info', {
+    'favorites__card-info': isFavoriteCard,
+  });
+
+  const ratingWidthPercentage = getRatingPercentageString(rating);
+
+  const imgSize = {
+    width: isFavoriteCard
+      ? IMAGE_CARD_SIZE.favorite.width
+      : IMAGE_CARD_SIZE.default.width,
+    height: isFavoriteCard
+      ? IMAGE_CARD_SIZE.favorite.height
+      : IMAGE_CARD_SIZE.default.height,
+  };
 
   return (
-    <article className="cities__card place-card">
+    <article className={`${cardType}__card place-card`}>
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+      <div className={`${cardType}__image-wrapper place-card__image-wrapper`}>
+        <Link to="#">
           <img
             className="place-card__image"
             src={previewImage}
-            width="260"
-            height="200"
+            width={imgSize.width}
+            height={imgSize.height}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
-      <div className="place-card__info">
+      <div className={cardInfoClass}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -53,12 +71,12 @@ export const CitiesCard = ({ offer }: CitiesCardProps) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: widthPercentage }}></span>
+            <span style={{ width: ratingWidthPercentage }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to="#">{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

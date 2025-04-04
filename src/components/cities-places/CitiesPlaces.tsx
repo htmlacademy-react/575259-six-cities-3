@@ -1,5 +1,5 @@
 import { Offer } from '../../types';
-import { CitiesCard } from '../cities-card/CitiesCard';
+import { OfferCard } from '../offer-card';
 import { SortingForm } from './components/sorting-form';
 
 type CitiesPlacesProps = {
@@ -13,7 +13,7 @@ export const CitiesPlaces = ({ offers }: CitiesPlacesProps) => (
     <SortingForm />
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
-        <CitiesCard key={offer.id} offer={offer} />
+        <OfferCard key={offer.id} offer={offer} />
       ))}
     </div>
   </section>

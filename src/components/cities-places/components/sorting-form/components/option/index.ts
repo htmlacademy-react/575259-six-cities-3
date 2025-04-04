@@ -1,5 +1,1 @@
-import { Option } from './Option';
-
-export {
-  Option,
-};
+export { Option } from './Option';

@@ -1,3 +1,1 @@
-import { SortingForm } from './SortingForm';
-
-export { SortingForm };
+export { SortingForm } from './SortingForm';

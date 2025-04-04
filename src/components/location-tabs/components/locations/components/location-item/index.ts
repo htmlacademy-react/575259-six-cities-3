@@ -1,3 +1,1 @@
-import { LocationItem } from './LocationItem';
-
-export { LocationItem };
+export { LocationItem } from './LocationItem';

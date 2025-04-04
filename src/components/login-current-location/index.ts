@@ -1,3 +1,1 @@
-import { LoginCurrentLocation } from './LoginCurrentLocation';
-
-export { LoginCurrentLocation };
+export { LoginCurrentLocation } from './LoginCurrentLocation';
