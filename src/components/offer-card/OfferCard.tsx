@@ -7,10 +7,11 @@ import { IMAGE_CARD_SIZE } from '../../constants';
 type OfferCardProps = {
   offer: Offer;
   cardType?: OfferCardType;
+  onOfferHover?: (offerId: string | null) => void;
 };
 
-export const OfferCard = ({ offer, cardType = 'cities' }: OfferCardProps) => {
-  const { title, type, price, previewImage, isPremium, isFavorite, rating } =
+export const OfferCard = ({ offer, cardType = 'cities', onOfferHover = () => {} }: OfferCardProps) => {
+  const { id, title, type, price, previewImage, isPremium, isFavorite, rating } =
     offer;
 
   const favoriteButtonClass = classNames(
@@ -38,15 +39,27 @@ export const OfferCard = ({ offer, cardType = 'cities' }: OfferCardProps) => {
       : IMAGE_CARD_SIZE.default.height,
   };
 
+  const handleOfferMouseLeave = () => {
+    onOfferHover(null);
+  };
+
+  const handleOfferMouseEnter = () => {
+    onOfferHover(id);
+  };
+
   return (
-    <article className={`${cardType}__card place-card`}>
+    <article
+      className={`${cardType}__card place-card`}
+      onMouseEnter={handleOfferMouseEnter}
+      onMouseLeave={handleOfferMouseLeave}
+    >
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
       <div className={`${cardType}__image-wrapper place-card__image-wrapper`}>
-        <Link to="#">
+        <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -76,7 +89,7 @@ export const OfferCard = ({ offer, cardType = 'cities' }: OfferCardProps) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="#">{title}</Link>
+          <Link to={`/offer/${offer.id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
