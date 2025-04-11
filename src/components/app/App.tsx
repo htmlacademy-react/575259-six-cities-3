@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Main } from '../../pages/main';
 import { Offer } from '../../types';
-import { Page404 } from '../../pages/page-404';
+import { NotFound } from '../../pages/not-found';
 import { Login } from '../../pages/login';
 import { Favorites } from '../../pages/favorites';
 import { Offer as OfferPage } from '../../pages/offer';
 import { PrivateRoute } from '../private-route';
-import { offer } from '../../mock/offer';
+import { offer } from '../../mocks/offer';
 
 type AppProps = {
   offers: Offer[];
@@ -26,7 +26,7 @@ export const App = ({ offers }: AppProps) => (
         />
         <Route path='offer/:id' element={<OfferPage offer={offer} />} />
       </Route>
-      <Route path='*' element={<Page404 />} />
+      <Route path='*' element={<NotFound />} />
     </Routes>
   </BrowserRouter>
 );
