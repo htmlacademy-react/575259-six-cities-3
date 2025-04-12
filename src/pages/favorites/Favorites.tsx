@@ -1,6 +1,6 @@
 import { FavoriteLocationOffers } from '../../components/favorite-location-offers';
 import { Locations } from '../../constants';
-import { OFFERS } from '../../mock/offers';
+import { OFFERS } from '../../mocks/offers';
 
 export const Favorites = () => (
   <main className="page__main page__main--favorites">
