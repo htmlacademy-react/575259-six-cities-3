@@ -1,13 +1,20 @@
 import { Locations } from './constants';
 
-export type Location = (typeof Locations)[keyof typeof Locations];
+type CityName = (typeof Locations)[keyof typeof Locations];
 
 export type HousingType = 'apartment' | 'room' | 'house' | 'hotel';
 export type OfferCardType = 'cities' | 'favorites';
 
-type City = {
-  name: Location;
+export type City = {
+  name: CityName;
+  location: Location;
 };
+
+type Location = {
+    latitude: number;
+    longitude: number;
+    zoom: number;
+}
 
 export type Offer = {
   id: string;
@@ -16,6 +23,7 @@ export type Offer = {
   price: number;
   previewImage: string;
   city: City;
+  location: Location;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;

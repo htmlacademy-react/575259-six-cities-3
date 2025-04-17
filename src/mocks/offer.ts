@@ -16,6 +16,16 @@ export const offer: OfferDetails = {
   ],
   'city': {
     'name': 'Paris',
+    location: {
+      'latitude': 48.85661,
+      'longitude': 2.351499,
+      'zoom': 13
+    }
+  },
+  'location': {
+    'latitude': 48.868610000000004,
+    'longitude': 2.342499,
+    'zoom': 16
   },
   'goods': [
     'Washer',
