@@ -21,9 +21,10 @@ type CitiesMapProps = {
     city: City;
     offers: Offer[];
     selectedOffer?: Offer | null;
+    className?: string;
 };
 
-export const CitiesMap: FC<CitiesMapProps> = ({ city, offers, selectedOffer }) => {
+export const CitiesMap: FC<CitiesMapProps> = ({ city, offers, selectedOffer, className }) => {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -51,5 +52,5 @@ export const CitiesMap: FC<CitiesMapProps> = ({ city, offers, selectedOffer }) =
     }
   }, [map, offers, selectedOffer]);
 
-  return <section ref={mapRef} className="cities__map"></section>;
+  return <section ref={mapRef} className={className} ></section>;
 };

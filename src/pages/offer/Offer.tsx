@@ -1,18 +1,20 @@
 import classNames from 'classnames';
-import { OfferDetails } from '../../types';
+import type { Comment, OfferDetails } from '../../types';
 import { capitalize, getRatingPercentageString } from '../../helpers/strings';
 import { useMemo } from 'react';
-import { COMMENTS } from '../../mocks/comments';
-import { OFFERS } from '../../mocks/offers';
 import { OfferCard } from '../../components/offer-card';
 import { ReviewForm } from '../../components/review-form';
-import { Comment } from '../../components/comment';
+import { Review } from '../../components/review';
+import { CitiesMap } from '../../components/cities-map';
+import type { Offer as OfferType } from '../../types';
 
 type OfferProps = {
   offer: OfferDetails;
+  comments: Comment[];
+  nearOffers: OfferType[];
 };
 
-export const Offer = ({ offer }: OfferProps) => {
+export const Offer = ({ offer, comments, nearOffers }: OfferProps) => {
   const {
     images,
     isPremium,
@@ -131,16 +133,16 @@ export const Offer = ({ offer }: OfferProps) => {
             </div>
             <section className="offer__reviews reviews">
               <h2 className="reviews__title">
-                Reviews &middot; <span className="reviews__amount">1</span>
+                Reviews &middot; <span className="reviews__amount">{comments.length}</span>
               </h2>
               <ul className="reviews__list">
-                {COMMENTS.map(
+                {comments.map(
                   ({ id, rating: commentRating, comment, date, user }) => {
                     const commentRatingWidthPercentage =
                       getRatingPercentageString(commentRating);
 
                     return (
-                      <Comment
+                      <Review
                         key={id}
                         user={user}
                         text={comment}
@@ -155,7 +157,7 @@ export const Offer = ({ offer }: OfferProps) => {
             </section>
           </div>
         </div>
-        <section className="offer__map map"></section>
+        <CitiesMap className="offer__map map" offers={nearOffers} city={nearOffers[0].city} />
       </section>
       <div className="container">
         <section className="near-places places">
@@ -163,7 +165,7 @@ export const Offer = ({ offer }: OfferProps) => {
             Other places in the neighbourhood
           </h2>
           <div className="near-places__list places__list">
-            {OFFERS.slice(0, 3).map((nearOffer) => (
+            {nearOffers.map((nearOffer) => (
               <OfferCard key={nearOffer.id} offer={nearOffer} />
             ))}
           </div>

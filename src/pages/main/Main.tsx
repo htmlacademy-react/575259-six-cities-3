@@ -26,7 +26,7 @@ export const Main = ({ offers }: MainProps) => {
           <div className="cities__places-container container">
             <Offers offers={offers} />
             <div className="cities__right-section">
-              <CitiesMap offers={offers} city={selectedOffer?.city || offers[0].city} selectedOffer={selectedOffer} />
+              <CitiesMap offers={offers} city={selectedOffer?.city || offers[0].city} selectedOffer={selectedOffer} className="cities__map map" />
             </div>
           </div>
         </div>

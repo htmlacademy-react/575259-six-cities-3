@@ -7,6 +7,7 @@ import { Favorites } from '../../pages/favorites';
 import { Offer as OfferPage } from '../../pages/offer';
 import { PrivateRoute } from '../private-route';
 import { offer } from '../../mocks/offer';
+import { COMMENTS } from '../../mocks/comments';
 
 type AppProps = {
   offers: Offer[];
@@ -24,7 +25,13 @@ export const App = ({ offers }: AppProps) => (
           </PrivateRoute>
         }
         />
-        <Route path='offer/:id' element={<OfferPage offer={offer} />} />
+        <Route path='offer/:id' element={
+          <OfferPage offer={offer}
+            comments={COMMENTS}
+            nearOffers={offers.slice(0, 3)}
+          />
+        }
+        />
       </Route>
       <Route path='*' element={<NotFound />} />
     </Routes>
