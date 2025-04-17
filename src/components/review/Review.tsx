@@ -1,19 +1,19 @@
 import { getFormattedDate } from '../../helpers/dates';
 import { User } from '../../types';
 
-type CommentTypeProps = {
+type ReviewProps = {
   user: User;
   text: string;
   date: string;
   ratingWidthPercentage: string;
 };
 
-export const Comment = ({
+export const Review = ({
   user,
   text,
   date,
   ratingWidthPercentage,
-}: CommentTypeProps) => {
+}: ReviewProps) => {
   const formattedDate = getFormattedDate(date);
 
   return (
